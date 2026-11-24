@@ -8,9 +8,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - name: Install
-        run: |
-          if [ -f package.json ]; then npm install; else echo "No package.json yet - nothing to install"; fi
-      - name: Test
-        run: |
-          if [ -f package.json ]; then npm test; else echo "No package.json yet - nothing to test"; fi
+      - run: npm ci
+      - name: Tests
+        run: npm test
+      - name: Architecture check
+        run: npm run check
